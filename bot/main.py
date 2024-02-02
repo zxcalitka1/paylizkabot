@@ -5,6 +5,7 @@ import config
 
 import keyboards
 
+from background import keep_alive
 from contextlib import suppress
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import Command, CommandStart
@@ -81,7 +82,7 @@ async def echo(message: Message):
 async def echo(message: Message):
     await message.answer(f"<b>Котик, я тебя не понимаю( Лучше воспользуйся меню❤</b>", reply_markup=keyboards.start_kb)    
 
-
+keep_alive()
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
